@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Spot Of The Day";
+}
+@model SpotOfTheDay.UI.Models.Response.BaseResponse<SpotOfTheDay.UI.Models.Response.AdVisionService.GetAllResponse>;
+
+@foreach (var item in Model.Data.Items)
+{
+    <head>
+        <meta name="brand" content="@item.Brandname">
+        <meta name="product" content="@item.productname">
+        <meta name="company" content="@item.companyname">
+    </head>
+}
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Data.Items)
+        {
+            <div class="col-3">
+                <img src=@item.az_image_url width="250" height="100" border="0" href="@item.video_path">
+            </div>
+        }
+
+    </div>
+    @if (Model.Data.PageCount>0)
+        {
+<div class="middle">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li onclick="changeSkipFirstPage()" class="page-item"><a class="page-link" href="#">❮❮  </a></li>
+            <li onclick="changeSkipPrev()" class="page-item"><a class="page-link" href="#">❮ </a></li>
+            @if (Model.Data.PageCount >= 5)
+            {
+                @for (int i = Model.Data.PagingConstant - 2; i < Model.Data.PagingConstant + 3; i++)
+                {
+                    if (Model.Data.CurrentPage == i)
+                    {
+                        <li class="page-item" onclick="changeSkip(@i)"><a class="currentPage" href="#">@i</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item" onclick="changeSkip(@i)"><a class="page-link" href="#">@i</a></li>
+                    }
+                }
+            }
+            else
+            {
+                @for (int i = 1; i <= Model.Data.PageCount; i++)
+                {
+                    if (Model.Data.CurrentPage == i)
+                    {
+                        <li class="page-item" onclick="changeSkip(@i)"><a class="currentPage" href="#">@i</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item" onclick="changeSkip(@i)"><a class="page-link" href="#">@i</a></li>
+                    }
+                }
+            }
+
+            <li onclick="changeSkipNext()" class="page-item"><a class="page-link" href="#">❯</a></li>
+            <li onclick="changeSkipLastPage()" class="page-item"><a class="page-link" href="#">❯❯</a></li>
+        </ul>
+    </nav>
+</div>
+        }
+else
+{
+            <div> No Data</div>
+}
+
+</div>
+
+<style type="text/css">
+    .middle {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<style type="text/css">
+    .currentPage {
+        position: relative;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #007bff;
+        background-color: mintcream;
+        border: 1px solid #dee2e6;
+    }
+</style>
+
+
+<script>
+    let filter = {
+        page: @Model.Data.CurrentPage
+    }
+
+    function changeSkipPrev() {
+        if (filter.page > 1)
+        {
+         filter.page = filter.page - 1;
+         callPage();
+        }
+    }
+    function changeSkipFirstPage() {
+        if (filter.page > 1) {
+            filter.page = 1;
+            callPage();
+        }
+    }
+    function changeSkipLastPage() {
+        if (filter.page < @Model.Data.PageCount) {
+            filter.page = @Model.Data.PageCount;
+            callPage();
+        }
+    }
+    function changeSkipNext() {
+        if (filter.page < @Model.Data.PageCount)
+          {
+            filter.page = filter.page + 1;
+            callPage();
+          }
+    }
+    function changeSkip(skip) {
+        filter.page = skip;
+        console.log(filter.page);
+        callPage();
+    }
+    function ajaxCall() {
+        // need partialview
+        $.ajax({
+            url: "/",
+            type: "get",
+            data: filter,
+            success: function (result) {
+                result = JSON.parse(JSON.stringify(result));
+                console.log(result);
+            },
+            error: function (result) {
+                result = JSON.parse(JSON.stringify(result));
+                console.log(result);
+            }
+        });
+    }
+    function callPage() {
+        window.location = "/?page=" + filter.page;
+    }
+
+
+
+
+
+</script>
+
+

@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "l/Er4rTnY1Cjm9ZrM0BBOxwY37Hpe6y7WwpZdJAx8QkvN57YBgiZK8xAtU8bmcz7kVDSo7NU4o2BRk+lAjdtfA==",
+  "success": true,
+  "projectFilePath": "/Users/cihanoguz/Projects/SpotOfTheDay/SpotOfTheDay.UI/SpotOfTheDay.UI.csproj",
+  "expectedPackageFiles": [
+    "/Users/cihanoguz/.nuget/packages/identitymodel/6.0.0/identitymodel.6.0.0.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/newtonsoft.json/13.0.2/newtonsoft.json.13.0.2.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/system.text.encodings.web/6.0.0/system.text.encodings.web.6.0.0.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/system.text.json/6.0.0/system.text.json.6.0.0.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.31/microsoft.netcore.app.host.osx-x64.3.1.31.nupkg.sha512",
+    "/Users/cihanoguz/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
